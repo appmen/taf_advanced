@@ -37,7 +37,8 @@ subprojects {
         }
         systemProperty("config", configuration)
         useTestNG() {
-
+            useDefaultListeners = true
+            suites 'src/test/resources/testng.xml'
         }
     }
 }

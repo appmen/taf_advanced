@@ -7,20 +7,16 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/feature/addlayers']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/appmen/taf_advanced.git']]])
             }
         }
-//         stage('Build') {
-//             steps {
-//                 bat 'mvn clean package'
-//             }
-//         }
         stage('Test') {
             steps {
-                bat 'gradle :ui:test -Pconfig=prod'
+                bat 'gradle clean :ui:test -Pconfig=prod'
+            }
+
+        }
+        stage('Publish Test Report') {
+            steps {
+                step([$class: 'Publisher', reportFilenamePattern: '**/reports/tests/test/testng-results.xml'])
             }
         }
-//         stage('Deploy') {
-//             steps {
-//                 bat 'mvn deploy'
-//             }
-//         }
     }
 }
