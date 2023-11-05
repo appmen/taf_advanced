@@ -11,12 +11,21 @@ pipeline {
             steps {
                 bat 'gradle clean :ui:test -Pconfig=prod'
             }
-
         }
-        stage('Publish TestNG Report') {
-            steps {
-                testNG 'build/reports/tests/test/testng-results.xml'
-            }
+    }
+    post {
+        always {
+                //This creates ugly reports
+                //step([$class: 'Publisher', reportFilenamePattern: 'build/reports/tests/test/testng-results.xml'])
+                publishHTML([
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: 'ui/build/reports/tests/test',
+                reportFiles: 'index.html',
+                reportName: 'TestNG Report',
+                reportTitles: 'TestNG Report'
+            ])
         }
     }
 }
