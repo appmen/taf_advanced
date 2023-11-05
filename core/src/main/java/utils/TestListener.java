@@ -12,12 +12,12 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult result) {
-        LOG.info("staring test " + result.getTestName());
+        LOG.info("staring test " + result.getName());
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-
+        LOG.info("completing test " + result.getName());
     }
 
     @Override
@@ -42,6 +42,5 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onFinish(ITestContext context) {
-        LOG.info("test finished " + context.getName());
     }
 }
