@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Publish TestNG Report') {
             steps {
-                testReport testResults: '**/reports/tests/test/testng-results.xml', failIfNoResults: true
+                testNG 'build/reports/tests/test/testng-results.xml'
             }
         }
     }
