@@ -13,9 +13,9 @@ pipeline {
             }
 
         }
-        stage('Publish Test Report') {
+        stage('Publish TestNG Report') {
             steps {
-                step([$class: 'Publisher', reportFilenamePattern: '**/reports/tests/test/testng-results.xml'])
+                testReport testResults: '**/reports/tests/test/testng-results.xml', failIfNoResults: true
             }
         }
     }
