@@ -15,13 +15,12 @@ import utils.TestListener;
 @Listeners({TestListener.class})
 public class LoginTest {
 
-    private WebDriver driver;
     private LoginPage loginPage;
     private DashboardsPage dashboardsPage;
 
     @BeforeClass
     public void setUp() {
-        driver = DriverManager.getDriver();
+        WebDriver driver = DriverManager.getDriver();
         loginPage = new LoginPage(driver);
         dashboardsPage = new DashboardsPage(driver);
     }
