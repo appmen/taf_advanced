@@ -2,4 +2,3 @@ rootProject.name = 'taf'
 
 include 'api'
 include 'ui'
-include 'core'
