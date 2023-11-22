@@ -21,10 +21,9 @@ subprojects {
         implementation 'org.apache.logging.log4j:log4j-core:2.21.1'
         // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
         implementation 'org.apache.logging.log4j:log4j-api:2.21.1'
-        // https://mvnrepository.com/artifact/org.testng/testng
-        implementation 'org.testng:testng:6.14.3'
-        // https://mvnrepository.com/artifact/org.testng/testng
-        testImplementation 'org.testng:testng:6.14.3'
+
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
         compileOnly 'org.projectlombok:lombok:1.18.30'
         annotationProcessor 'org.projectlombok:lombok:1.18.30'
@@ -42,9 +41,7 @@ subprojects {
             println("no config")
         }
         systemProperty("config", configuration)
-        useTestNG() {
-            useDefaultListeners = true
-            suites 'src/test/resources/testng.xml'
+        useJUnitPlatform() {
         }
     }
 }
