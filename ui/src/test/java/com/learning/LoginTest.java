@@ -20,11 +20,11 @@ public class LoginTest {
     private static final Map<String, String> uiConfig = new UIConfig().getConfig();
     private static final String USER_NAME = uiConfig.get("user");
     private static final String PASSWORD = uiConfig.get("password");
-    private static ThreadLocal<LoginPage> loginPage = new ThreadLocal<>();
-    private static ThreadLocal<DashboardsPage> dashboardsPage = new ThreadLocal<>();
+    private static final ThreadLocal<LoginPage> loginPage = new ThreadLocal<>();
+    private static final ThreadLocal<DashboardsPage> dashboardsPage = new ThreadLocal<>();
 
-    private static ThreadLocal<WebDriver> currentDriver = new ThreadLocal<>();
-    private static List<WebDriver> driversToCleanup = Collections.synchronizedList(new ArrayList<>());
+    private static final ThreadLocal<WebDriver> currentDriver = new ThreadLocal<>();
+    private static final List<WebDriver> driversToCleanup = Collections.synchronizedList(new ArrayList<>());
 
 
     @AfterAll
