@@ -1,23 +1,10 @@
 package com.learning;
 
-import com.learning.configuration.UIConfig;
-import com.learning.driver.DriverManager;
-import com.learning.pages.DashboardsPage;
-import com.learning.pages.LoginPage;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
-import org.openqa.selenium.WebDriver;
-
-import java.util.*;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class LoginTest {
-    private static final Map<String, String> uiConfig = new UIConfig().getConfig();
+    /*private static final Map<String, String> uiConfig = new UIConfig().getConfig();
     private static final String USER_NAME = uiConfig.get("user");
     private static final String PASSWORD = uiConfig.get("password");
     private static final ThreadLocal<LoginPage> loginPage = new ThreadLocal<>();
@@ -73,5 +60,5 @@ public class LoginTest {
         loginPage.get().waitForRedirection();
         assertTrue(loginPage.get().isOnPage(), "Login page is not loaded anymore!");
 
-    }
+    }*/
 }

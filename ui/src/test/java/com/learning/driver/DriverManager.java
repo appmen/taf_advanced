@@ -15,7 +15,7 @@ import java.util.Map;
 public class DriverManager {
     private static final Logger LOG = LogManager.getRootLogger();
     private static final Map<String, String> commonConfig = new CommonUIConfig().getConfig();
-    private static WebDriver driver;
+    private static final ThreadLocal<WebDriver> currentDriver = new ThreadLocal<>();
 
     private static final String DRIVER_TYPE = commonConfig.get("browser").toLowerCase();
     private static final String TIMEOUT = commonConfig.get("timeout");
@@ -24,22 +24,22 @@ public class DriverManager {
     }
 
     public static WebDriver getDriver() {
-        if (driver == null) {
-            driver = createDriver();
+        if (currentDriver.get() == null) {
+            createDriver();
         }
-        return driver;
+        return currentDriver.get();
     }
 
-    private static WebDriver createDriver() {
+    private static void createDriver() {
         switch (DRIVER_TYPE) {
             case "chrome" -> {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver(chromeOptions);
+                currentDriver.set( new ChromeDriver(chromeOptions));
 
             }
             case "firefox" -> {
-                driver = new FirefoxDriver();
+                currentDriver.set(new FirefoxDriver());
             }
             case "ie" -> {
             }
@@ -49,16 +49,15 @@ public class DriverManager {
                 throw new IllegalArgumentException(error);
             }
         }
-        driver.manage().timeouts().implicitlyWait(
+        currentDriver.get().manage().timeouts().implicitlyWait(
                 Duration.ofSeconds(Long.parseLong(TIMEOUT))
         );
         LOG.info("Driver is created");
-        return driver;
     }
 
     public static void closeDriver() {
-        driver.quit();
-        driver = null;
+        currentDriver.get().quit();
+        currentDriver.remove();
         LOG.info("Driver is stopped");
     }
 }

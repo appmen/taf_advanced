@@ -11,7 +11,6 @@ subprojects {
     java.sourceCompatibility(JavaVersion.VERSION_19)
     java.targetCompatibility(JavaVersion.VERSION_19)
 
-
     repositories {
         mavenCentral()
     }
@@ -42,6 +41,7 @@ subprojects {
         }
         systemProperty("config", configuration)
         useJUnitPlatform() {
+            systemProperty("cucumber.junit-platform.naming-strategy", "long")
         }
     }
 }
