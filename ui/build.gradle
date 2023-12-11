@@ -1,0 +1,29 @@
+plugins {
+    id 'application'
+}
+
+application {
+    mainClass = ''
+}
+
+dependencies {
+    implementation project(':submodule')
+    testImplementation project(':submodule')
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+    implementation 'org.seleniumhq.selenium:selenium-java:4.15.0'
+    // https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager
+    implementation 'io.github.bonigarcia:webdrivermanager:5.6.0'
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-params
+    implementation 'org.junit.jupiter:junit-jupiter-params:5.10.0'
+    implementation 'io.cucumber:cucumber-java:7.14.0'
+    implementation 'io.cucumber:cucumber-junit:7.14.0'
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-junit-platform-engine
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.14.0'
+    // https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite-engine
+    implementation 'org.junit.platform:junit-platform-suite-engine:1.10.1'
+// https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer
+    implementation 'io.cucumber:cucumber-picocontainer:7.14.1'
+    testImplementation 'org.junit.vintage:junit-vintage-engine:5.7.2'
+
+}
+
