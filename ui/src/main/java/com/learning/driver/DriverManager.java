@@ -36,9 +36,7 @@ public class DriverManager {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver(chromeOptions);
-                driver.manage().timeouts().implicitlyWait(
-                        Duration.ofSeconds(Long.parseLong(TIMEOUT))
-                );
+
             }
             case "firefox" -> {
                 driver = new FirefoxDriver();
@@ -51,7 +49,9 @@ public class DriverManager {
                 throw new IllegalArgumentException(error);
             }
         }
-
+        driver.manage().timeouts().implicitlyWait(
+                Duration.ofSeconds(Long.parseLong(TIMEOUT))
+        );
         LOG.info("Driver is created");
         return driver;
     }
