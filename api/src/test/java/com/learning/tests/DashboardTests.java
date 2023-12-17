@@ -1,6 +1,7 @@
 package com.learning.tests;
 
 import com.learning.configuration.APIConfig;
+import com.learning.configuration.ClientManager;
 import com.learning.endpoints.DashboardsService;
 import com.learning.endpoints.LoginService;
 import com.learning.model.dashboards.BodyMessageResponse;
@@ -46,7 +47,7 @@ public class DashboardTests {
     @BeforeAll
     void setUp() throws IOException {
         retrofit.set(new Retrofit.Builder()
-                .baseUrl(RP_URL)
+                .baseUrl(RP_URL).client(ClientManager.getClient().build())
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build());
 
