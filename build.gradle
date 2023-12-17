@@ -40,8 +40,6 @@ subprojects {
             println("no config")
         }
         systemProperty("config", configuration)
-        useJUnitPlatform() {
-            systemProperty("cucumber.junit-platform.naming-strategy", "long")
-        }
+
     }
 }

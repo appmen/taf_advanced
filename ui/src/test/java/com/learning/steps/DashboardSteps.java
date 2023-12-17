@@ -7,12 +7,10 @@ import io.cucumber.java.en.Given;
 import static org.junit.Assert.assertTrue;
 
 public class DashboardSteps {
-        private final ThreadLocal<DashboardsPage> dashboardsPage = new ThreadLocal<>();
-//    private final DashboardsPage dashboardsPage;
+    private final ThreadLocal<DashboardsPage> dashboardsPage = new ThreadLocal<>();
 
-    public DashboardSteps(){
+    public DashboardSteps() {
         dashboardsPage.set(new DashboardsPage(DriverManager.getDriver()));
-//        dashboardsPage = new DashboardsPage(DriverManager.getDriver());
     }
 
     @Given("^I see a Dashboards page$")
