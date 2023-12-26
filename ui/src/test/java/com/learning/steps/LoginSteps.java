@@ -8,13 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginSteps{
     private final ThreadLocal<LoginPage> loginPage = new ThreadLocal<>();
-//    private final LoginPage loginPage;
-//    final Hooks hooks;
 
     public LoginSteps(){
-//        this.hooks = hooks;
         loginPage.set(new LoginPage(DriverManager.getDriver()));
-//        loginPage = new LoginPage(DriverManager.getDriver());
     }
 
     @Given("I attempt to login with user {string} and {string}")
