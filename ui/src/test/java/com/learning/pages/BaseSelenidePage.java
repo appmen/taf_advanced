@@ -13,7 +13,6 @@ import org.openqa.selenium.By;
 
 import java.util.Map;
 
-import static com.codeborne.selenide.Condition.disappear;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -21,7 +20,6 @@ public class BaseSelenidePage {
     private static final Logger LOG = LogManager.getRootLogger();
 
     private static final Map<String, String> COMMON_CONFIG = new CommonUIConfig().getConfig();
-    private static final Map<String, String> UI_CONFIG = new CommonUIConfig().getConfig();
     private static final String DRIVER_TYPE = COMMON_CONFIG.get("browser").toLowerCase();
     private static final String TIMEOUT = COMMON_CONFIG.get("timeout");
     private static final Map<String, String> uiConfig = new UIConfig().getConfig();
@@ -30,7 +28,7 @@ public class BaseSelenidePage {
 
     private final SelenideElement popUpMessage = $(By.xpath("//div[@class='notification-transition-enter-done']/div/p"));
 
-    public String getPopUpTextAndDismiss(){
+    public String getPopUpTextAndDismiss() {
         LOG.info("Waiting for popUp");
         String popUpText = popUpMessage.text();
         popUpMessage.click();
@@ -39,13 +37,13 @@ public class BaseSelenidePage {
     }
 
     @BeforeAll
-    public static void init(){
+    public static void init() {
         Configuration.browser = DRIVER_TYPE;
         Configuration.pageLoadTimeout = Long.parseLong(TIMEOUT);
     }
 
     @AfterEach
-    public void closeBrowser(){
+    public void closeBrowser() {
         Selenide.closeWebDriver();
     }
 }
