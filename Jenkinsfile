@@ -4,7 +4,16 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/feature/module9']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/appmen/taf_advanced.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/feature/module9']],
+                doGenerateSubmoduleConfigurations: false,
+                          extensions: [[$class: 'SubmoduleOption',
+                                        disableSubmodules: false,
+                                        parentCredentials: false,
+                                        recursiveSubmodules: true,
+                                        reference: '',
+                                        trackingSubmodules: false]],
+                          submoduleCfg: [],
+                 userRemoteConfigs: [[url: 'https://github.com/appmen/taf_advanced.git']]])
             }
         }
         stage('Test') {
