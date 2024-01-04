@@ -7,7 +7,7 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/feature/module9']],
                 doGenerateSubmoduleConfigurations: false,
                 extensions: [submodule(recursiveSubmodules: true, reference: '')],
-                userRemoteConfigs: [[credentialsId: '75c8e9ce-efeb-4baf-8840-5e5267560da8', url: 'https://github.com/appmen/taf_advanced.git']])
+                userRemoteConfigs: [[credentialsId: '75c8e9ce-efeb-4baf-8840-5e5267560da8', url: 'https://github.com/appmen/taf_advanced.git']]])
             }
         }
         stage('Test') {
