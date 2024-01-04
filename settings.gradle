@@ -2,4 +2,4 @@ rootProject.name = 'taf'
 
 include 'api'
 include 'ui'
-include 'submodule'
+include 'submodule-util'

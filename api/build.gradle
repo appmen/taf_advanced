@@ -7,8 +7,8 @@ repositories {
 }
 
 dependencies {
-    implementation project(':submodule')
-    testImplementation project(':submodule')
+    implementation project(':submodule-util')
+    testImplementation project(':submodule-util')
 
     testImplementation 'com.squareup.retrofit2:retrofit:2.9.0'
     testImplementation 'com.squareup.retrofit2:converter-jackson:2.9.0'
