@@ -1,0 +1,3 @@
+[submodule "submodule-util"]
+	path = submodule-util
+	url = https://github.com/appmen/submodule-util
