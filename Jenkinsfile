@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                bat 'gradle clean test -Pconfig=prod'
+                sh 'gradle clean test -Pconfig=prod'
             }
         }
     }
