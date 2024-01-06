@@ -9,9 +9,23 @@ pipeline {
                 userRemoteConfigs: [[credentialsId: '75c8e9ce-efeb-4baf-8840-5e5267560da8', url: 'https://github.com/appmen/taf_advanced.git']]])
             }
         }
+        stage ('Scan'){
+            steps{
+                withSonarQubeEnv(installationName:'sonar'){
+                    sh 'gradle clean build sonar:sonar'
+                }
+            }
+        }
+        stage ('Quality gate'){
+            steps{
+                timeout(time: 1, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
         stage('Test') {
             steps {
-                sh 'gradle clean test -Pconfig=prod'
+                cmd 'gradle test -Pconfig=prod'
             }
         }
     }
