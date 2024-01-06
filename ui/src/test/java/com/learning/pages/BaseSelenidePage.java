@@ -40,6 +40,7 @@ public class BaseSelenidePage {
     public static void init() {
         Configuration.browser = DRIVER_TYPE;
         Configuration.pageLoadTimeout = Long.parseLong(TIMEOUT);
+        Configuration.headless = true;
     }
 
     @AfterEach
