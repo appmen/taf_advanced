@@ -24,9 +24,10 @@ pipeline {
                 alwaysLinkToLastBuild: true,
                 keepAll: true,
                 reportDir: 'ui/build/reports/tests/test',
+                reportDir: 'api/build/reports/tests/test',
                 reportFiles: 'index.html',
-                reportName: 'TestNG Report',
-                reportTitles: 'TestNG Report'
+                reportName: 'TAF Report',
+                reportTitles: 'TAF Report'
             ])
         }
     }
