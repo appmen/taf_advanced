@@ -12,7 +12,7 @@ pipeline {
         stage ('Scan'){
             steps{
                 withSonarQubeEnv(installationName:'sonar'){
-                    sh './gradlew sonar -Dsonar.projectKey=TAF_advanced -Dsonar.projectName="TAF_advanced" -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_0a9da578a38098d2a9ec05c81207db49df40f085'
+                    sh 'gradle sonar -Dsonar.projectKey=TAF_advanced -Dsonar.projectName="TAF_advanced" -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_0a9da578a38098d2a9ec05c81207db49df40f085'
                 }
             }
         }
