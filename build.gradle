@@ -5,6 +5,7 @@ plugins {
 
 subprojects {
     apply plugin: 'java'
+    apply plugin: 'org.sonarqube'
 
     group 'com.learning'
     version '1.0-SNAPSHOT'
