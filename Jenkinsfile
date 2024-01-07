@@ -6,7 +6,7 @@ pipeline {
             steps {
                 checkout scmGit([branches: [[name: '*/feature/module9']],
                 extensions: [submodule(parentCredentials: true, recursiveSubmodules: true, reference: '', trackingSubmodules: false)],
-                userRemoteConfigs: [[credentialsId: '75c8e9ce-efeb-4baf-8840-5e5267560da8', url: 'https://github.com/appmen/taf_advanced.git']]])
+                userRemoteConfigs: [[credentialsId: 'git_creds', url: 'https://github.com/appmen/taf_advanced.git']]])
             }
         }
         stage ('Scan'){
